@@ -319,3 +319,13 @@
   "report": |-
     Here is the final answer from your managed agent '{{name}}':
     {{final_answer}}
+
+"final_answer":
+  "pre_messages": |-
+    You have been asked to provide a final answer based on your previous work. Please provide a comprehensive response that includes:
+    
+    1. Task outcome (short version)
+    2. Task outcome (detailed version) 
+    3. Additional context if relevant
+    
+    Make sure your answer is helpful and complete.

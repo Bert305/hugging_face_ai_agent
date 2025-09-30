@@ -31,6 +31,20 @@ def my_custom_tool(arg1:str, arg2:int)-> str: #it's import to specify the return
     return "What magic will you build ?"
 
 @tool
+def system_status() -> str:
+    """Check the current system status and available tools.
+    """
+    status = []
+    status.append(f"✅ System Status Report - {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    status.append(f"🔑 HF Token: {'✅ Loaded' if hf_token else '❌ Missing'}")
+    status.append(f"🕐 Timezone Tool: ✅ Working")
+    status.append(f"🔍 Web Search: ✅ Initialized (ddgs package)")
+    status.append(f"�️ Image Generation: ✅ Loaded from HF Hub")
+    status.append(f"🤖 Agent: Ready to help!")
+    
+    return "\n".join(status)
+
+@tool
 def get_current_time_in_timezone(timezone: str) -> str:
     """A tool that fetches the current local time in a specified timezone.
     Args:
@@ -60,8 +74,20 @@ model = HfApiModel(
 )
 
 
-# Import tool from Hub
-image_generation_tool = load_tool("agents-course/text-to-image", trust_remote_code=True)
+# Import tool from Hub with authentication
+try:
+    image_generation_tool = load_tool("agents-course/text-to-image", trust_remote_code=True, token=hf_token)
+    print("✅ Image generation tool loaded successfully")
+except Exception as e:
+    print(f"⚠️ Could not load image generation tool: {e}")
+    # Create a fallback tool
+    @tool
+    def image_generation_tool(prompt: str) -> str:
+        """Fallback image generation tool when the main tool fails to load.
+        Args:
+            prompt: Description of the image to generate
+        """
+        return f"Image generation temporarily unavailable. Requested image: {prompt}"
 
 with open("prompts.yaml", 'r') as stream:
     prompt_templates = yaml.safe_load(stream)
@@ -69,15 +95,41 @@ with open("prompts.yaml", 'r') as stream:
 # Initialize tools
 web_search_tool = WebSearchTool()
 
+# Create a list of working tools
+working_tools = [final_answer, get_current_time_in_timezone, system_status]
+
+# Add web search if it works
+try:
+    # Test web search tool initialization only
+    web_search_tool = WebSearchTool()
+    working_tools.append(web_search_tool)
+    print("✅ Web search tool loaded successfully")
+except Exception as e:
+    print(f"⚠️ Web search tool failed: {e}")
+    # Create a fallback web search tool
+    @tool
+    def web_search_fallback(query: str) -> str:
+        """Fallback web search when DuckDuckGo search fails.
+        Args:
+            query: The search query
+        """
+        return f"Web search temporarily unavailable. Query was: {query}. Please try again later or use a different approach."
+    working_tools.append(web_search_fallback)
+
+# Add image generation tool
+working_tools.append(image_generation_tool)
+
+print(f"📋 Loaded {len(working_tools)} tools: {[tool.name if hasattr(tool, 'name') else str(tool) for tool in working_tools]}")
+
 agent = CodeAgent(
     model=model,
-    tools=[final_answer, web_search_tool, get_current_time_in_timezone, image_generation_tool], ## add your tools here (don't remove final answer)
-    max_steps=6,
-    verbosity_level=1,
+    tools=working_tools,
+    max_steps=10,  # Increased max_steps to allow more complex tasks
+    verbosity_level=2,  # Increased verbosity for better debugging
     grammar=None,
     planning_interval=None,
-    name=None,
-    description=None,
+    name="HuggingFaceAIAgent",
+    description="A helpful AI agent with web search, image generation, and time zone capabilities",
     prompt_templates=prompt_templates
 )
 

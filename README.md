@@ -150,12 +150,37 @@ app.py                 # Main application and agent initialization
 
 This project is open source and available under the MIT License.
 
-## 🙏 Acknowledgments
+## 🎓 Learning Journey & Achievements
 
-- HuggingFace for the amazing smolagents framework
-- OpenAI for powerful language models
+This project represents the culmination of comprehensive AI agent development training:
+
+### � **Course Documentation**
+- **[Complete Course Notes & Documentation](https://docs.google.com/document/d/1vHNgp8yaSmCnY-iqVOGMVTacrMUvZEQNtsszaUe1jK8/edit?usp=sharing)** - Detailed notes and insights from the HuggingFace Agents course
+
+### 🏆 **Certification**
+- **[HuggingFace Agents Course Certificate](https://cas-bridge.xethub.hf.co/xet-bridge-us/67a47037749ea2c4b9fafd4b/d8d1a66c162fe3df9d9897b55c2348080aa649f5cff8b2d45170c72e79423e60?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20250930%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250930T043928Z&X-Amz-Expires=3600&X-Amz-Signature=07907a008a2690ce21f4f20463cf9101294af0633fdebf58ac434e7e89cfafe1&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=6818393441450cf054a221a2&response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-09-26.png%3B+filename%3D%222025-09-26.png%22%3B&response-content-type=image%2Fpng&x-id=GetObject&Expires=1759210768&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1OTIxMDc2OH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82N2E0NzAzNzc0OWVhMmM0YjlmYWZkNGIvZDhkMWE2NmMxNjJmZTNkZjlkOTg5N2I1NWMyMzQ4MDgwYWE2NDlmNWNmZjhiMmQ0NTE3MGM3MmU3OTQyM2U2MCoifV19&Signature=IjfPAyXWkZn-lJ9aKYMRHLj8GFQnoN7NkRGsRHpqZVHmH6pkhB6QRqQbol4UNDyYCV9Qy6whb1QH3vMSHp2b8OJgiiivVFZElh4I%7ErbF41wl439zIS%7EFnMDFGic7RMFvavxoxEmhcIPjwLHsO1DVoRuuwf%7Ez4XvAPgIbNZ2LUYf%7Ec0BCHJlpt6rBKnVKcMurXt5jWY1MueG0mQtlx8madarOEOMv6RhIBAj3IY98WG8bc97GlLwHgaqDN52XlflwBtMxHWzyadCpf6xJk8Irww-zCAh1Fs80SYJJOwYl87OXVmb7ZQ53sAX-TMPQt1l4h1%7E-llJMdJkssPsFN1R3RQ__&Key-Pair-Id=K2L8F4GPSG1IFC)** - Official certificate of achievement for completing the HuggingFace Agents course
+
+### 🎥 **Video Tutorial**
+- **[HuggingFace Agents Course YouTube Video](https://www.youtube.com/watch?v=nNIlnKuCNcI)** - Visual walkthrough and demonstration of AI agent development concepts
+
+### 🌟 **What This Represents**
+This project demonstrates mastery of:
+- **Agent Architecture Design** - Building robust multi-tool AI systems
+- **API Integration** - Seamlessly combining HuggingFace and OpenAI services
+- **Tool Development** - Creating custom tools for specialized tasks
+- **Error Handling** - Implementing fallback mechanisms and robust error management
+- **User Experience** - Designing intuitive interfaces with Gradio
+- **Production Deployment** - Preparing agents for real-world usage
+
+## �🙏 Acknowledgments
+
+- HuggingFace for the amazing smolagents framework and comprehensive agent development course
+- OpenAI for powerful language models and API integration
 - The open-source community for tools and libraries
+- The AI/ML community for continuous innovation and knowledge sharing
 
 ---
 
 **Ready to experience the power of multi-tool AI assistance? Launch your agent and start exploring!** 🚀
+
+*This project represents a journey from learning to implementation - showcasing the practical application of cutting-edge AI agent development techniques.*

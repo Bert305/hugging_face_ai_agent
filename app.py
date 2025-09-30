@@ -13,6 +13,12 @@ from Gradio_UI import GradioUI
 # Load environment variables
 load_dotenv()
 
+# Check if HF token is loaded
+hf_token = os.getenv('HUGGINGFACE_API_TOKEN')
+if not hf_token:
+    raise ValueError("HUGGINGFACE_API_TOKEN not found in environment variables. Please check your .env file.")
+print(f"✅ HF Token loaded: {hf_token[:10]}..." if hf_token else "❌ No HF Token found")
+
 # Below is an example of a tool that does nothing. Amaze us with your creativity !
 @tool
 def my_custom_tool(arg1:str, arg2:int)-> str: #it's import to specify the return type
@@ -46,10 +52,11 @@ final_answer = FinalAnswerTool()
 # model_id='https://pflgm2locj2t89co.us-east-1.aws.endpoints.huggingface.cloud' 
 
 model = HfApiModel(
-max_tokens=2096,
-temperature=0.5,
-model_id='Qwen/Qwen2.5-Coder-32B-Instruct',# it is possible that this model may be overloaded
-custom_role_conversions=None,
+    max_tokens=2096,
+    temperature=0.5,
+    model_id='Qwen/Qwen2.5-Coder-32B-Instruct',# it is possible that this model may be overloaded
+    custom_role_conversions=None,
+    token=hf_token
 )
 
 

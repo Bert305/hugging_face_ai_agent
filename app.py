@@ -3,9 +3,15 @@ import datetime
 import requests
 import pytz
 import yaml
+import os
+from dotenv import load_dotenv
 from tools.final_answer import FinalAnswerTool
+from tools.web_search import DuckDuckGoSearchTool as WebSearchTool
 
 from Gradio_UI import GradioUI
+
+# Load environment variables
+load_dotenv()
 
 # Below is an example of a tool that does nothing. Amaze us with your creativity !
 @tool
@@ -53,9 +59,12 @@ image_generation_tool = load_tool("agents-course/text-to-image", trust_remote_co
 with open("prompts.yaml", 'r') as stream:
     prompt_templates = yaml.safe_load(stream)
     
+# Initialize tools
+web_search_tool = WebSearchTool()
+
 agent = CodeAgent(
     model=model,
-    tools=[final_answer], ## add your tools here (don't remove final answer)
+    tools=[final_answer, web_search_tool, get_current_time_in_timezone, image_generation_tool], ## add your tools here (don't remove final answer)
     max_steps=6,
     verbosity_level=1,
     grammar=None,

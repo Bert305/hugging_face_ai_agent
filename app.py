@@ -112,14 +112,12 @@ else:
 # ======================
 # Load image generation tool
 try:
-    image_generation_tool = load_tool(
-        "agents-course/text-to-image",
-        trust_remote_code=True,
-        token=hf_token,
-    )
-    print("✅ Image generation tool loaded")
+    from tools.image_generation import HuggingFaceImageGenerationTool, ImageSearchTool
+    image_generation_tool = HuggingFaceImageGenerationTool()
+    image_search_tool = ImageSearchTool()
+    print("✅ Custom image generation tool loaded")
 except Exception as e:
-    print(f"⚠️ Could not load image generation tool: {e}")
+    print(f"⚠️ Could not load custom image generation tool: {e}")
 
     @tool
     def image_generation_tool(prompt: str) -> str:
@@ -128,6 +126,14 @@ except Exception as e:
             prompt: Description of the image to generate
         """
         return f"Image generation unavailable. Requested image: {prompt}"
+    
+    @tool
+    def image_search_tool(query: str) -> str:
+        """Fallback image search tool.
+        Args:
+            query: What kind of image to search for
+        """
+        return f"Image search unavailable. Query: {query}"
 
 # Load prompt templates
 with open("prompts.yaml", "r") as stream:
@@ -160,8 +166,8 @@ except Exception as e:
 
     working_tools.append(web_search_fallback)
 
-# Image generation
-working_tools.append(image_generation_tool)
+# Image generation and search
+working_tools.extend([image_generation_tool, image_search_tool])
 
 # OpenAI-powered tools
 if openai_key:

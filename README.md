@@ -29,16 +29,17 @@ A powerful AI agent that combines the best of HuggingFace and OpenAI technologie
 - **Premium Mode**: OpenAI GPT-4o-mini for enhanced reasoning and performance
 - **Fallback Mode**: HuggingFace Qwen2.5-Coder-32B-Instruct for reliable operation
 
-### 🛠️ **8 Integrated Tools**
+### 🛠️ **9 Integrated Tools**
 
 1. **🔍 Web Search** - Real-time web search using DuckDuckGo
-2. **🖼️ Image Generation** - AI-powered image creation via HuggingFace Hub
-3. **🕐 Timezone Conversion** - Get current time in any timezone worldwide
-4. **📝 Text Analysis** - Sentiment analysis, summarization, translation (OpenAI-powered)
-5. **💻 Code Review** - Code quality assessment and optimization suggestions (OpenAI-powered)
-6. **✍️ Creative Writing** - Stories, poems, articles, marketing copy (OpenAI-powered)
-7. **📊 System Status** - Real-time monitoring of all agent capabilities
-8. **✅ Final Answer** - Structured response delivery system
+2. **🖼️ Image Generation** - Custom Stable Diffusion XL implementation via HuggingFace Inference API
+3. **🔎 Image Search** - Web-based image search suggestions and resources
+4. **🕐 Timezone Conversion** - Get current time in any timezone worldwide
+5. **📝 Text Analysis** - Sentiment analysis, summarization, translation (OpenAI-powered)
+6. **💻 Code Review** - Code quality assessment and optimization suggestions (OpenAI-powered)
+7. **✍️ Creative Writing** - Stories, poems, articles, marketing copy (OpenAI-powered)
+8. **📊 System Status** - Real-time monitoring of all agent capabilities
+9. **✅ Final Answer** - Structured response delivery system
 
 ## 🚀 Quick Start
 
@@ -72,6 +73,23 @@ A powerful AI agent that combines the best of HuggingFace and OpenAI technologie
 ### Access
 The agent will be available at: **http://127.0.0.1:7860**
 
+## 🆕 Recent Updates
+
+### **Image Generation Enhancement (Latest)**
+- ✅ **Fixed API Authentication Issues** - Resolved "You must provide an api_key" errors
+- 🎨 **Custom Stable Diffusion Integration** - Direct HuggingFace Inference API implementation
+- 🖼️ **Enhanced Image Quality** - Automatic prompt enhancement with quality modifiers
+- 💾 **Local Image Saving** - Generated images saved to `./temp_images/` directory
+- 🔍 **Image Search Fallback** - Alternative image search suggestions when generation fails
+- ⚡ **Improved Error Handling** - Better user feedback for various scenarios
+- 📁 **File Management** - Organized image storage with unique filenames
+
+### **What's New:**
+- **9 Tools Total** (up from 8) - Added dedicated image search tool
+- **Robust Image Generation** - Uses `stabilityai/stable-diffusion-xl-base-1.0`
+- **No More API Errors** - Proper token authentication and error recovery
+- **Enhanced User Experience** - Clear feedback and fallback options
+
 ## 💬 Example Queries
 
 ### Web Search & Information
@@ -79,10 +97,13 @@ The agent will be available at: **http://127.0.0.1:7860**
 - "Search for Python programming tutorials"
 - "Find information about climate change research"
 
-### Image Generation
+### Image Generation & Search
 - "Generate an image of a sunset over mountains"
 - "Create a picture of a futuristic robot"
 - "Make an image of a cozy coffee shop"
+- "Generate a high-resolution image of a peaceful garden"
+- "Search for images of dogs if generation fails"
+- "Find pictures of modern architecture online"
 
 ### Text Analysis (OpenAI-Enhanced)
 - "Analyze the sentiment of this text: 'I love this new AI agent!'"
@@ -134,9 +155,12 @@ app.py                 # Main application and agent initialization
 - **HuggingFace Model**: Qwen/Qwen2.5-Coder-32B-Instruct with 2096 max tokens, 0.5 temperature
 
 ### Tool Enhancement
-- OpenAI tools use GPT-3.5-turbo for specialized tasks
-- Comprehensive error handling and fallback mechanisms
-- Real-time system status monitoring
+- **OpenAI Integration** - GPT-3.5-turbo for text analysis, code review, and creative writing
+- **Custom Image Generation** - Direct Stable Diffusion XL API implementation
+- **Image Processing** - Automatic prompt enhancement and quality optimization
+- **Comprehensive Error Handling** - Fallback mechanisms for all tools
+- **File Management** - Organized storage for generated images
+- **Real-time System Status** - Monitoring of all 9 agent capabilities
 
 ## 🤝 Contributing
 

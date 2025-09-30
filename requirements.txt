@@ -9,3 +9,4 @@ huggingface_hub
 python-dotenv
 pytz
 pyyaml
+openai>=1.0.0
